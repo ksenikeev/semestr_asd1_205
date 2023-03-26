@@ -1,7 +1,4 @@
 package ru.itis.semestr_asd1_205.gaifullin;
-
-import java.util.Arrays;
-
 public class MyAlgorithm {
     public static void main(String[] args) {
         String string = "aaatgaacgaaaatctgt";
@@ -49,16 +46,5 @@ public class MyAlgorithm {
             pi[i] = j;
         }
         return pi;
-    }
-
-
-    public static int max(int[] array){
-        int maxim = -1;
-        for (int i = 0; i < array.length; ++i){
-            if (array[i] > maxim) {
-                maxim = array[i];
-            }
-        }
-        return maxim;
     }
 }
