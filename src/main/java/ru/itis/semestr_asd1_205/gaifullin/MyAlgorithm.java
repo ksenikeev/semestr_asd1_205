@@ -4,13 +4,32 @@ import java.util.Arrays;
 
 public class MyAlgorithm {
     public static void main(String[] args) {
-        String string = "avada kedavra";
-        System.out.print(Arrays.toString(prefixFunction(string)));
-
+        String string = "aaatgaacgaaaatctgt";
+        String pattern = "acga";
+        System.out.print(KMP(string, pattern,0));
     }
 
-    public static void KMP(String string, String pattern){
-
+    public static int KMP(String string, String pattern, int startIndex){
+        // Вычисляем перфикс функцию для паттерна
+        int[] pi = prefixFunction(pattern);
+        int index = -1;
+        int j = 0; // j - индекс паттерна
+        for(int i = startIndex; i < string.length(); ++i){
+            // Если элементы не равны и j > 0, то откатываем в начало или до тех пор, пока символы не будут совпадать.
+            for(;j>0 && string.charAt(i) != pattern.charAt(j);){
+                j = pi[j-1];
+            }
+            //Если символы совпадают, то двигаем оба курсора
+            if (string.charAt(i) == pattern.charAt(j)){
+                ++j;
+            }
+            //Если j равен последнему элементу подстроки (поиск успешен)
+            if(j >= pattern.length()){
+                index = i - j + 1;
+                return index;
+            }
+        }
+        return index;
     }
 
     public static int[] prefixFunction(String string){
