@@ -17,11 +17,14 @@ public class MyAlgorithm {
         int[] pi = prefixFunction(pattern);
         int index = -1;
         int j = 0; // j - индекс паттерна
+
+        // базовый случай 1: шаблон нулевой или пустой
         if (pattern == null || pattern.length() == 0)
         {
             System.out.println("The pattern occurs with shift 0");
             return index;
         }
+        // базовый случай 2: текст равен NULL или длина текста меньше длины шаблона
         if (string == null || pattern.length() > string.length())
         {
             System.out.println("Pattern not found");
