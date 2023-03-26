@@ -1,8 +1,14 @@
 package ru.itis.semestr_asd1_205.gaifullin;
+
+import java.util.Scanner;
+
 public class MyAlgorithm {
     public static void main(String[] args) {
-        String string = "aaatgaacgaaaatctgt";
-        String pattern = "acga";
+
+        Scanner scanner = new Scanner(System.in);
+
+        String string = scanner.nextLine();
+        String pattern = scanner.nextLine();
         System.out.print(KMP(string, pattern,0));
     }
 
