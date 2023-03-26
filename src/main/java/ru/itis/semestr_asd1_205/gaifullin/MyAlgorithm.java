@@ -17,6 +17,16 @@ public class MyAlgorithm {
         int[] pi = prefixFunction(pattern);
         int index = -1;
         int j = 0; // j - индекс паттерна
+        if (pattern == null || pattern.length() == 0)
+        {
+            System.out.println("The pattern occurs with shift 0");
+            return index;
+        }
+        if (string == null || pattern.length() > string.length())
+        {
+            System.out.println("Pattern not found");
+            return index;
+        }
         for(int i = startIndex; i < string.length(); ++i){
             // Если элементы не равны и j > 0, то откатываем в начало или до тех пор, пока символы не будут совпадать.
             for(;j>0 && string.charAt(i) != pattern.charAt(j);){
