@@ -10,13 +10,13 @@ public class Onotation {
             int result;
             final int startIndex = 0;
             Random random = new Random();
-            try (FileWriter writer = new FileWriter("KMP.csv")) {
+            try (FileWriter writer = new FileWriter("KMP-3.csv")) {
 
                 for (int i = 100; i < 1000000; i += 1000) {
 
                     string = givenUsingPlainJava(i);
                     int randomNumder = random.nextInt(i-2) + 1;
-                    pattern = givenUsingPlainJava(randomNumder);
+                    pattern = givenUsingPlainJava(99);
 
 
 
