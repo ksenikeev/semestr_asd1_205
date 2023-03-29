@@ -1,4 +1,4 @@
-package ru.itis.semestr_asd1_205.enikeev;
+package ru.itis.semestr_asd1_205.gainullova.alogirthm;
 
 import java.io.*;
 import java.util.Arrays;
