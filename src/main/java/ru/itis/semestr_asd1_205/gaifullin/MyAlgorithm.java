@@ -48,22 +48,22 @@ public class MyAlgorithm {
         return index;
     }
 
-    public static int[] prefixFunction(String string){
+    public static int[] prefixFunction(String string) {
         int n = string.length();
-        int[] pi = new int[n];
-        for(int i = 1; i < n; ++i){
-            int j = pi[i-1];
-            // Если элементы не равны и j > 0, то откатываем в начало или до тех пор, пока символы не будут совпадать.
-            for(; j > 0 && string.charAt(j) != string.charAt(i);){
-                j = pi[j-1];
+        int k;
+        //создадим массив, он будет заполнен нулями.
+        int[] p = new int[n];
+        p[0] = 0;
+        for (int i = 1; i < string.length(); i++) {
+            k = p[i-1];
+            while (k > 0 && string.charAt(i)!=string.charAt(k)){
+                k = p[k-1];
             }
-            // Символы совпадают, увеличиваем длину подпоследовательности
-            if(string.charAt(j) == string.charAt(i)){
-                ++j;
+            if (string.charAt(i) == string.charAt(k)){
+                k++;
             }
-            //на i-ый символ ставим значение макс префикса и суфикса на данный момент
-            pi[i] = j;
+            p[i] = k;
         }
-        return pi;
+        return p;
     }
 }
