@@ -1,5 +1,5 @@
 package ru.itis.semestr_asd1_205.gaifullin;
-import jdk.internal.misc.ScopedMemoryAccess;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
