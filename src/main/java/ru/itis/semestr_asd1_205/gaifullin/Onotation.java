@@ -1,4 +1,6 @@
 package ru.itis.semestr_asd1_205.gaifullin;
+import jdk.internal.misc.ScopedMemoryAccess;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
@@ -33,28 +35,28 @@ public class Onotation {
 
         }
 
-        public static int[] prefixFunction(String string){
-            int n = string.length();
-            int[] pi = new int[n];
-            for(int i = 1; i < n; ++i){
-                ++count;
-                int j = pi[i-1];
-                // Если элементы не равны и j > 0, то откатываем в начало или до тех пор, пока символы не будут совпадать.
-                for(; j > 0 && string.charAt(j) != string.charAt(i);){
-                    ++count;
-                    j = pi[j-1];
-                }
-                // Символы совпадают, увеличиваем длину подпоследовательности
-                if(string.charAt(j) == string.charAt(i)){
-                    ++count;
-                    ++j;
-                }
-                //на i-ый символ ставим значение макс префикса и суфикса на данный момент
-                pi[i] = j;
-            }
+    public static int[] prefixFunction(String string) {
+        int n = string.length();
+        int k;
+        //создадим массив, он будет заполнен нулями.
+        int[] p = new int[n];
+        p[0] = 0;
+        for (int i = 1; i < n; i++) {
             ++count;
-            return pi;
+            k = p[i-1];
+            while (k > 0 && string.charAt(i)!=string.charAt(k)){
+                ++count;
+                k = p[k-1];
+            }
+            if (string.charAt(i) == string.charAt(k)){
+                ++count;
+                k++;
+            }
+            p[i] = k;
         }
+        ++count;
+        return p;
+    }
         public static int KMP(String string, String pattern, int startIndex){
             // Вычисляем перфикс функцию для паттерна
             int[] pi = prefixFunction(pattern);
