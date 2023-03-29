@@ -17,7 +17,7 @@ public class QuickSort {
                 }
                 long t = System.nanoTime();
                 count = 0;
-                sortArray(a, 0, a.length - 1);
+                quickSort(a, 0, a.length - 1);
                 writer.write(i + ";" + count + ";" + (System.nanoTime() - t) + "\n");
             }
         } catch (IOException e) {
@@ -25,7 +25,7 @@ public class QuickSort {
         }
     }
 
-    public static void sortArray(int[] array, int m, int n) {
+    public static void quickSort(int[] array, int m, int n) {
         if (array.length == 0 || m >= n) {
             count++;
             return; //если массив пустой или все элементы уже отсортированы
@@ -57,11 +57,11 @@ public class QuickSort {
         //у нас получилось так, что слева числа меньше, а справа больше, теперь мы эти половинки прогоняем по тому же алгоритму
         if (m < j) {
             count++;
-            sortArray(array, m, j);
+            quickSort(array, m, j);
         }
         if (n > i) {
             count++;
-            sortArray(array, i, n);
+            quickSort(array, i, n);
         }
     }
 
