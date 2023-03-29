@@ -1,5 +1,6 @@
 package ru.itis.semestr_asd1_205.gaifullin;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MyAlgorithm {
@@ -9,8 +10,9 @@ public class MyAlgorithm {
 
         String string = scanner.nextLine();
         String pattern = scanner.nextLine();
-        System.out.print(KMP(string, pattern,0));
+        System.out.print((KMP(string,pattern,0)));
     }
+
 
     public static int KMP(String string, String pattern, int startIndex){
         // Вычисляем перфикс функцию для паттерна
@@ -32,7 +34,7 @@ public class MyAlgorithm {
         }
         for(int i = startIndex; i < string.length(); ++i){
             // Если элементы не равны и j > 0, то откатываем в начало или до тех пор, пока символы не будут совпадать.
-            for(;j>0 && string.charAt(i) != pattern.charAt(j);){
+            while (j>0 && string.charAt(i) != pattern.charAt(j)){
                 j = pi[j-1];
             }
             //Если символы совпадают, то двигаем оба курсора
