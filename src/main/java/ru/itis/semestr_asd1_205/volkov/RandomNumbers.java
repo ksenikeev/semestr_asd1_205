@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
+package ru.itis.semestr_asd1_205.volkov;
 
 
 public class RandomNumbers {
