@@ -1,5 +1,4 @@
 package ru.itis.semestr_asd1_205.gaifullin;
-import jdk.internal.misc.ScopedMemoryAccess;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,20 +11,18 @@ public class Onotation {
             int result;
             final int startIndex = 0;
             Random random = new Random();
-            try (FileWriter writer = new FileWriter("KMP-3.csv")) {
+            try (FileWriter writer = new FileWriter("KMP-4.csv")) {
 
                 for (int i = 100; i < 1000000; i += 1000) {
 
                     string = givenUsingPlainJava(i);
-                    int randomNumder = random.nextInt(i-2) + 1;
-                    pattern = givenUsingPlainJava(99);
+                    pattern = givenUsingPlainJava(6);
 
 
 
                     long t = System.nanoTime();
                     count = 0;
                     result = KMP(string, pattern, startIndex);
-
 
                     writer.write(i + ";" + count + ";" + (System.nanoTime() - t) + "\n");
                 }
@@ -87,7 +84,7 @@ public class Onotation {
         public static String givenUsingPlainJava(int len) {
 
             int leftLimit = 97; // letter 'a'
-            int rightLimit = 122; // letter 'z'
+            int rightLimit = 100; // letter 'd'
             int targetStringLength = len;
             Random random = new Random();
             StringBuilder buffer = new StringBuilder(targetStringLength);
