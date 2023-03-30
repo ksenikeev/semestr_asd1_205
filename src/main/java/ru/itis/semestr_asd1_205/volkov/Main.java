@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+package ru.itis.semestr_asd1_205.volkov;
 
 public class Main {
 
