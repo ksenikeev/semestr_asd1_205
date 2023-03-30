@@ -1,0 +1,68 @@
+package org.example;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+
+public class PatienceSort {
+    public static void main(String[] args) {
+        generateTestFiles();
+    }
+    public static void generateTestFiles() {
+        Integer[] a;
+        int count;
+        int start = 100;
+        int end = 10001;
+
+        try {
+            FileWriter fileWriter = new FileWriter("test1.txt");
+
+            for (int i = start; i < end; i += 10) {
+                a = new Integer[i];
+                for (int j = 0; j < i; j++) {
+                    a[j] = (int) (Math.random() * i);
+                }
+                long t = System.nanoTime();
+                count = sort(a);
+
+                fileWriter.write(i + ";" + count + ";" + (System.nanoTime() - t) + "\n");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static <E extends Comparable<? super E>> int sort (E[] n) {
+        int count = 0;
+        {
+            List<Pile<E>> piles = new ArrayList<Pile<E>>();
+            for (E x : n) {
+                count += 1;
+                Pile<E> newPile = new Pile<E>();
+                newPile.push(x);
+                int i = Collections.binarySearch(piles, newPile);
+                if (i < 0) i = ~i;
+                if (i != piles.size())
+                    piles.get(i).push(x);
+                else
+                    piles.add(newPile);
+            }
+
+            PriorityQueue<Pile<E>> heap = new PriorityQueue<Pile<E>>(piles);
+            for (int c = 0; c < n.length; c++) {
+                count += 1;
+                Pile<E> smallPile = heap.poll();
+                n[c] = smallPile.pop();
+                if (!smallPile.isEmpty())
+                    heap.offer(smallPile);
+            }
+            assert (heap.isEmpty());
+        }
+        return count;
+    }
+    private static class Pile<E extends Comparable<? super E>> extends Stack<E> implements Comparable<Pile<E>> {
+        public int compareTo(Pile<E> y) { return peek().compareTo(y.peek()); }
+
+
+    }
+
+}
