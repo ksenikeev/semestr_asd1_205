@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+package ru.itis.semestr_asd1_205.volkov;
 
 public class DataWriter {
     public void dataWrite(long count,long timer,int length){
