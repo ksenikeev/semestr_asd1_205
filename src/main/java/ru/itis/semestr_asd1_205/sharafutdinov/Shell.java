@@ -1,3 +1,5 @@
+package ru.itis.semestr_asd1_205.sharafutdinov;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ class Shell {
                 arr[j] = temp;
             }
         }
-        System.out.println("Кол-во итераций: " + count);
+//        System.out.println(count);
         return 0;
     }
 
@@ -55,14 +57,15 @@ class Shell {
 
                     array = readAndWriteToArray(fileName, array);
 
-                    printArray(array);
+//                    printArray(array);
                     Shell sh = new Shell();
                     long t = System.nanoTime();
                     sh.sort(array);
                     long d = System.nanoTime() - t;
-                    printArray(array);
-                    System.out.println("Время выполнения");
+//                    printArray(array);
+//                    System.out.println("Время выполнения");
                     System.out.println(d);
+//                    System.out.println(array.length);
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
