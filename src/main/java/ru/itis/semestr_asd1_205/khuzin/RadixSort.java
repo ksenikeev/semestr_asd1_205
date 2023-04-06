@@ -29,7 +29,7 @@ public class RadixSort {
             count++;
             countingArray[i] += countingArray[i - 1];}
 
-        int[] outputArray = new int[500000];
+        int[] outputArray = new int[500000];//создали массив для вывода
         for (int i = arr.length - 1; i >= 0; i--){
             count++;
             outputArray[--countingArray[(arr[i] / s) % 10]] = arr[i];}
